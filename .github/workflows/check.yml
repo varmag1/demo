@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        run: actions/checkout@v4
+        run: actions/checkout
 
       - name: Setup NodeJs
         uses: actions/setup-node@v4
