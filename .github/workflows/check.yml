@@ -2,12 +2,23 @@ name: Check
 on: push
 
 jobs:
-  lint:
-    runs-on: ubuntu:latest
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install deps
+      - name: Checkout Code
+        run: actions/checkout@v4
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: install deps
         run: npm ci
-      - name: Lint
+
+      - name: run Lint
         run: npm run lint
+
+      - name: start tests
+        run: npm run test
